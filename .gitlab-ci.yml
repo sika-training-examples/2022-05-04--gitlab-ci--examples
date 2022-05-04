@@ -1,9 +1,7 @@
-test:
-  image: ondrejsika/pytest
+image: sikalabs/ci
+
+job:
   script:
-    - pytest --junitxml=report.xml
-  after_script:
-    - cat report.xml
-  artifacts:
-    reports:
-      junit: report.xml
+    - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
+    - docker build -t $CI_REGISTRY_IMAGE .
+    - docker push $CI_REGISTRY_IMAGE
