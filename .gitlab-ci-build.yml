@@ -3,4 +3,4 @@
 
 build:
   stage: build
-  script: env | XXX
+  script: env | grep XXX
