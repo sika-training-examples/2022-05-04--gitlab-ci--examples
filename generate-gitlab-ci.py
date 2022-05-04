@@ -26,7 +26,21 @@ def make_service(name):
 with open(".gitlab-ci.yml", "w") as f:
     pipeline = {}
     pipeline.update({
-        "stages": ["build", "deploy"]
+        "stages": ["init","build", "deploy"],
+        "regenerare-gitlab-ci": {
+          "stage": "init",
+          "only": {
+            "changes": [
+              "generate-gitlab-ci.py"
+            ]
+          },
+          "script": [
+            "git clone https://ci-bot:HikmMBzkzzuJ6xN_rfmU@https://gitlab.sikademo.com/example/ondrejsika.git repo",
+            "cd repo",
+            "make generate-gitlab-ci",
+            "git push"
+          ]
+        }
     })
     for service in SERVICES:
         pipeline.update(make_service(service))
