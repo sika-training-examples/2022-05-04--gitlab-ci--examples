@@ -8,6 +8,7 @@ deploy:
   stage: deploy
   when: manual
   script: echo test ...
+  allow_failure: false
 
 
 deploy_verification:
