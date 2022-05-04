@@ -1,6 +1,6 @@
 # .gitlab-ci.yml
 
-stage:
+stages:
   - deploy
   - deploy_verification
 
