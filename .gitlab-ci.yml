@@ -20,5 +20,7 @@ build:
       - GOOS: windows
         GOARCH:
           - amd64
-  script: go build main.go
-
+  script: go build -o hello-$GOOS-$GOARCH main.go
+  artifacts:
+    paths:
+        - hello-*
