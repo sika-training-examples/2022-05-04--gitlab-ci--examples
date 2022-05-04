@@ -1,18 +1,19 @@
-# .gitlab-ci.yml
+stages:
+  - generate
+  - pipeline
 
-demo:
-  trigger: example/martinkonecny
+generate:
+  stage: generate
+  image: python:3.7-slim
+  script: python generate-gitlab-ci.py
+  artifacts:
+    paths:
+      - .gitlab-ci.generated.yml
 
-foo:
-  variables:
-    PREFIX: foo
+pipeline:
+  stage: pipeline
   trigger:
-    include: https://gitlab.sikademo.com/example/ci/-/raw/main/simple-k8s.yml
-    strategy: depend
-
-bar:
-  variables:
-    PREFIX: bar
-  trigger:
-    include: https://gitlab.sikademo.com/example/ci/-/raw/main/simple-k8s.yml
+    include:
+      - artifact: .gitlab-ci.generated.yml
+        job: generate
     strategy: depend
