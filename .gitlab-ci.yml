@@ -7,7 +7,7 @@ stages:
 
 build:
   stage: build
-  parallel:
+  parallel: &matrix
     matrix:
       - GOOS: linux
         GOARCH:
@@ -24,3 +24,9 @@ build:
   artifacts:
     paths:
         - hello-*
+
+build2:
+  stage: build
+  parallel:
+    <<: *matrix
+  script: go build -o hello2-$GOOS-$GOARCH main.go
