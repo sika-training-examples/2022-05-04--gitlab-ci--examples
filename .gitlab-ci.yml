@@ -5,8 +5,13 @@ image: golang
 stages:
   - build
 
-build:
+.job: &job
   stage: build
+  only:
+    - main
+
+build:
+  <<: *job
   parallel: &matrix
     matrix:
       - GOOS: linux
@@ -26,7 +31,7 @@ build:
         - hello-*
 
 build2:
-  stage: build
+  <<: *job
   parallel:
     <<: *matrix
   script: go build -o hello2-$GOOS-$GOARCH main.go
