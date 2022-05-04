@@ -10,4 +10,4 @@ deploy:
     - helm upgrade --install $CI_PROJECT_PATH_SLUG -n default sikalabs/hello-world --set host=$HOST
   environment:
     name: prod-$CI_COMMIT_REF_SLUG
-    url: https://$HOST
+    url: https://$CI_PROJECT_PATH_SLUG-$CI_COMMIT_REF_SLUG.$KUBE_INGRESS_BASE_DOMAIN
