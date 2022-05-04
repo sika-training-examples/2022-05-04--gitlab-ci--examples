@@ -1,6 +1,10 @@
 
 # .gitlab-ci-deploy.yml
 
+variables:
+  XXX_B: b
+  XXX_A: xxx
+
 deploy:
   stage: deploy
   script: echo deploy

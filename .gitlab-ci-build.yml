@@ -3,4 +3,4 @@
 
 build:
   stage: build
-  script: echo build
+  script: env | XXX
