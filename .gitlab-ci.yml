@@ -1,6 +1,14 @@
-
 deploy:
-  script: echo 'Deploy!'
+  script: echo Deploy!
   environment:
     name: $CI_COMMIT_REF_SLUG
     url: https://$CI_COMMIT_REF_SLUG.dev.company.com
+    on_stop: stop job
+
+stop job:
+  script: echo Stop!
+  when: manual
+  allow_failure: false
+  environment:
+    name: $CI_COMMIT_REF_SLUG
+    action: stop
