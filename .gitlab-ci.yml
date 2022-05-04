@@ -18,11 +18,10 @@ build:
 deploy:
   stage: deploy
   script:
-    - env | grep KUBE
     - helm repo add sikalabs https://helm.sikalabs.io
-    - helm upgrade --install $CI_PROJECT_PATH_SLUG -n default sikalabs/hello-world
+    - helm upgrade --install $CI_PROJECT_PATH_SLUG-$CI_COMMIT_REF_SLUG -n default sikalabs/hello-world
       --set host=$HOST
       --set image=$IMAGE
   environment:
-    name: prod-$CI_COMMIT_REF_SLUG
+    name: $CI_COMMIT_REF_SLUG
     url: https://$CI_PROJECT_PATH_SLUG-$CI_COMMIT_REF_SLUG.$KUBE_INGRESS_BASE_DOMAIN
