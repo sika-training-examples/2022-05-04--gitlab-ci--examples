@@ -1,1 +1,57 @@
-{"image": "sikalabs/ci", "stages": ["init", "build", "deploy"], "regenerare-gitlab-ci": {"stage": "init", "image": "python:3.9", "only": {"changes": ["generate-gitlab-ci.py"]}, "script": ["git clone https://ci-bot:HikmMBzkzzuJ6xN_rfmU@gitlab.sikademo.com/example/ondrejsika.git repo", "cd repo", "git config --global user.email \"ci-bot@sikalabs.io\"", "git config --global user.name \"CI Bot\"", "make generate-gitlab-ci || true", "git push"]}, "build-foo": {"stage": "build", "script": ["echo Build foo"]}, "deploy-foo": {"stage": "deploy", "script": ["echo Deploy foo"]}, "build-bar": {"stage": "build", "script": ["echo Build bar"]}, "deploy-bar": {"stage": "deploy", "script": ["echo Deploy bar"]}, "build-baz": {"stage": "build", "script": ["echo Build baz"]}, "deploy-baz": {"stage": "deploy", "script": ["echo Deploy baz"]}, "build-ahoj": {"stage": "build", "script": ["echo Build ahoj"]}, "deploy-ahoj": {"stage": "deploy", "script": ["echo Deploy ahoj"]}, "build-hello": {"stage": "build", "script": ["echo Build hello"]}, "deploy-hello": {"stage": "deploy", "script": ["echo Deploy hello"]}}
+# .gitlab-ci.yml
+
+stages:
+  - build
+  - test
+  - deploy
+
+linux build:
+  stage: build
+  script: sleep 10 && echo Done
+
+mac build:
+  stage: build
+  script: sleep 20 && echo Done
+
+lint:
+  stage: test
+  needs: []
+  script: echo Done
+
+linux unit tests:
+  stage: test
+  needs:
+    - linux build
+  script: echo Done
+
+linux e2e tests:
+  stage: test
+  needs:
+    - linux build
+  script: sleep 10 && echo Done
+
+mac unit tests:
+  stage: test
+  needs:
+    - mac build
+  script: sleep 5 && echo Done
+
+mac e2e tests:
+  stage: test
+  needs:
+    - mac build
+  script: sleep 30 && echo Done
+
+release linux:
+  stage: deploy
+  script: "echo Done"
+  needs:
+    - linux unit tests
+    - linux e2e tests
+
+release mac:
+  stage: deploy
+  script: "echo Done"
+  needs:
+    - mac unit tests
+    - mac e2e tests
