@@ -4,9 +4,9 @@ stages:
   - build
   - test
 
-"Muj build: job":
+my_build_job:
   stage: build
-  script: echo Build! && false
+  script: echo Build! 
 
 test1:
   stage: test
