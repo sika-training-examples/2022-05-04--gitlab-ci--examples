@@ -9,13 +9,14 @@ stages:
 build:
   stage: build
   script:
-    - mkdir -p out
-    - echo '<h1>Hello World!</h1>' > out/index.html
+    - go build -o hello-linux main.go
+    - GOOS=darwin GOARCH=arm64 go build -o hello-mac main.go
   artifacts:
     paths:
-      - out
+      - hello-linux
+      - hello-mac
 
 test:
   stage: test
   script:
-    - cat out/index.html
+    - ./hello-linux
