@@ -1,13 +1,2 @@
-# .gitlab-ci.yml
-
-Build A:
-  script: echo Cuild A ...
-  only:
-    changes:
-      - a/**
-
-Build B:
-  script: echo Cuild B ...
-  only:
-    changes:
-      - b/**
+job:
+  script: env
