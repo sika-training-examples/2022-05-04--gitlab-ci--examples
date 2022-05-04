@@ -26,6 +26,7 @@ def make_service(name):
 with open(".gitlab-ci.yml", "w") as f:
     pipeline = {}
     pipeline.update({
+        "image": "sikalabs/ci",
         "stages": ["init","build", "deploy"],
         "regenerare-gitlab-ci": {
           "stage": "init",
