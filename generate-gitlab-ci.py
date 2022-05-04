@@ -35,7 +35,7 @@ with open(".gitlab-ci.yml", "w") as f:
             ]
           },
           "script": [
-            "git clone https://ci-bot:HikmMBzkzzuJ6xN_rfmU@https://gitlab.sikademo.com/example/ondrejsika.git repo",
+            "git clone https://ci-bot:HikmMBzkzzuJ6xN_rfmU@gitlab.sikademo.com/example/ondrejsika.git repo",
             "cd repo",
             "make generate-gitlab-ci",
             "git push"
