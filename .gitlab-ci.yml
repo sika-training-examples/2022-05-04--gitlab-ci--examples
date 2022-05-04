@@ -1,5 +1,8 @@
 # .gitlab-ci.yml
 
+demo:
+  trigger: example/martinkonecny
+
 foo:
   variables:
     PREFIX: foo
