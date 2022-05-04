@@ -39,6 +39,8 @@ with open(".gitlab-ci.yml", "w") as f:
           "script": [
             "git clone https://ci-bot:HikmMBzkzzuJ6xN_rfmU@gitlab.sikademo.com/example/ondrejsika.git repo",
             "cd repo",
+            'git config --global user.email "ci-bot@sikalabs.io"',
+            'git config --global user.name "CI Bot"',
             "make generate-gitlab-ci",
             "git push"
           ]
