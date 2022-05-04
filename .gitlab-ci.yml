@@ -1,16 +1,36 @@
 # .gitlab-ci.yml
 
 stages:
+  - unit_test
+  - integration_test
+  - build
   - deploy
-  - deploy_verification
+
+unit_test:
+  stage: unit_test
+  script: echo Unit Test ...
+  only:
+    - branches
+    - tags
+    - merge_requests
+
+integration_test:
+  stage: integration_test
+  script: echo Integration Test ...
+  only:
+    - merge_requests
+
+build:
+  stage: build
+  script: echo Build ...
+  only:
+    - main
+    - tags
 
 deploy:
   stage: deploy
+  script: echo Deploy ...
+  only:
+    - tags
   when: manual
-  script: echo test ...
   allow_failure: false
-
-
-deploy_verification:
-  stage: deploy_verification
-  script: echo test ...false
