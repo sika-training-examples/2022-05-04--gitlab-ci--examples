@@ -1,10 +1,15 @@
 # .gitlab-ci.yml
 
-test:
-  when: manual
-  script: echo test ... && false
+stage:
+  - deploy
+  - deploy_verification
 
-test2:
+deploy:
+  stage: deploy
   when: manual
-  script: echo test ... && false
-  allow_failure: false
+  script: echo test ...
+
+
+deploy_verification:
+  stage: deploy_verification
+  script: echo test ...false
