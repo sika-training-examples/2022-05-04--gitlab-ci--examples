@@ -5,4 +5,4 @@ job1:
 job2:
   script:
     - echo Hello World!
-    - echo Ahoj Svete!
+    - echo Ahoj Svete! && false
