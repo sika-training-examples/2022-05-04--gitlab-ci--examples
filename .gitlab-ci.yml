@@ -1,2 +1,10 @@
-job:
-  script: cat $XXX_README
+variables:
+  XXX_GLOBAL: global
+
+job1:
+  script: env | grep XXX
+
+job2:
+  variables:
+    XXX_LOCAL: local
+  script: env | grep XXX
