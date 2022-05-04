@@ -1,2 +1,2 @@
 job:
-  script: env
+  script: env | grep XXX
