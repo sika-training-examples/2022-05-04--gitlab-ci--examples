@@ -3,9 +3,9 @@ deploy:
   environment:
     name: $CI_COMMIT_REF_SLUG
     url: https://$CI_COMMIT_REF_SLUG.dev.company.com
-    on_stop: stop job
+    on_stop: stop_job
 
-stop job:
+stop_job:
   script: echo Stop!
   when: manual
   environment:
