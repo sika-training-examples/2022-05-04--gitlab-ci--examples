@@ -1,7 +1,15 @@
 # .gitlab-ci.yml
 
-variables:
-  PREFIX: foo
+foo:
+  variables:
+    PREFIX: foo
+  trigger:
+    include: https://gitlab.sikademo.com/example/ci/-/raw/main/simple-k8s.yml
+    strategy: depend
 
-include:
-  - https://gitlab.sikademo.com/example/ci/-/raw/main/simple-k8s.yml
+bar:
+  variables:
+    PREFIX: bar
+  trigger:
+    include: https://gitlab.sikademo.com/example/ci/-/raw/main/simple-k8s.yml
+    strategy: depend
