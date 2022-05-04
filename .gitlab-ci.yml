@@ -1,19 +1,7 @@
 # .gitlab-ci.yml
 
-before_script:
-  - echo Global before
-
-after_script:
-  - echo Global after
-
-job1:
-  script: echo Job1!
-
-job2:
-  script: echo Job2! && false
-
-job3:
-  before_script:
-    - echo Local before
-  after_script: []
-  script: echo Job3!
+job:
+  script:
+      - echo aws ec2 create ...
+      - echo make test && false
+      - echo aws ec2 delete ...
