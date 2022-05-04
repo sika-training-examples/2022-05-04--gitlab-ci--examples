@@ -1,2 +1,2 @@
 job:
-  script: env | grep XXX
+  script: cat $XXX_README
