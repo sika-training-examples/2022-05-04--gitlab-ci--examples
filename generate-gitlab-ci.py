@@ -41,7 +41,7 @@ with open(".gitlab-ci.yml", "w") as f:
             "cd repo",
             'git config --global user.email "ci-bot@sikalabs.io"',
             'git config --global user.name "CI Bot"',
-            "make generate-gitlab-ci",
+            "make generate-gitlab-ci || true",
             "git push"
           ]
         }
