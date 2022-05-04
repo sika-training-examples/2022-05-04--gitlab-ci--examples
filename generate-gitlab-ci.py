@@ -30,6 +30,7 @@ with open(".gitlab-ci.yml", "w") as f:
         "stages": ["init","build", "deploy"],
         "regenerare-gitlab-ci": {
           "stage": "init",
+          "image": "python:3.9",
           "only": {
             "changes": [
               "generate-gitlab-ci.py"
